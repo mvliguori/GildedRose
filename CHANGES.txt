@@ -1,0 +1,41 @@
+Problem assembling:  In this version update it was decided to achieve the following goals:
+1. Entirely update code to ES6 & ES7
+
+2. Defining the feature purpose and UX for this project.
+:: Constraints - 
+:: C1. The focus this iteration is to be able to explain design choices under time constraints of two days
+:: C2. A single webpage supported by REST API backend.
+:: C3. Maintain using a file for data manipulation and not a DB to ensure portability and stability by not adopting additional configuration
+:: C4. Re-utilize inventory data as modularization is already supported.
+:: C5. Maintain original terminal command line controls (modularization already supported)
+:: C6. Maintain the original Guilded Rose Inventory reqs
+:: Requirements - 
+:: R1. Show all the items.
+:: R2. Increment the days of use.
+:: R3. Purchase an item.
+:: R4. Sell an item.
+:: R5. Reset the item list.
+:: R6. Random Gossip.
+
+2. Create a webpage using Angular
+
+3. Create a listening server with REST API routes to following CRUD to support the UX reqs.
+:: Use object pointers (shallow copy) to inventory data to facilate data manipulation.
+:: GET  request - Show all the items.
+:: POST request - Increment the days of use.
+:: POST request -  Purchase an item.
+:: DELETE request - Sell an item.
+:: POST request - Reset the item list.
+:: GET request - Get Gossip
+
+Conclusion: Reflections of choices and recommended enhancements
+1.  Define Story ID for the UX requirements
+2.  Create standard message structure of REST API to handle success & error responses.
+3.  Enable internal error codes to depict where in the UX story the error is reported by using the Story IDs as a prefix to the error code.
+4.  Time to design a more verbose UI to depict a better UX.
+5.  Authorization of endpoint usage.
+6.  Inventory-api contains gossip endpoint.  It should really be in a seperate api file that depicts the purpose of gossip chatting endpoints.
+7.  Not all area's of code is setup for ES6 & ES7.  Use IDE to setup testing to ensure the standard.
+8.  Enable Trash feature
+9.  Enable front-end UI to be the prospective the Patron talking to the Item Keeper.
+10. Enable feature  'Stop going to the store(end program)' in UI to store the current operational inventory

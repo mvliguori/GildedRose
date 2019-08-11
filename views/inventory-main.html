@@ -1,0 +1,105 @@
+<html>
+<head>
+    <title>Guilded Rose Inventory</title>
+    <meta charset="utf-8"/>
+    <link rel="shortcut icon" href="favicon.png">
+
+    <!--Import Google Icon Font-->
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+
+    <!--Import jQuery before materialize.js-->
+    <script type="text/javascript" src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.7.8/angular.min.js"></script>
+
+    <link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/themes/smoothness/jquery-ui.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
+    
+    <!--Import CKEditor-->
+    <script src="https://cdn.ckeditor.com/4.9.2/basic/ckeditor.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/angular-ckeditor/1.0.3/angular-ckeditor.min.js"></script>
+
+    <!-- import enrollment admin script -->
+    <script type="text/javascript" src="/scripts/inventory-main.js?t=<%= new Date().getTime() %>"></script>
+
+    <style>
+        table, th , td {
+          border: 1px solid grey;
+          border-collapse: collapse;
+          padding: 5px;
+        }
+
+        table tr:nth-child(odd) {
+          background-color: #f1f1f1;
+        }
+
+        table tr:nth-child(even) {
+          background-color: #ffffff;
+        }
+    </style>
+    
+</head>
+<body id="page-top" class="index" ng-app="inventoryMain" ng-controller="mainCtrl">
+    <header>
+        <div class="navbar-fixed">
+            <nav id="guilded-rose-navbar">
+                <h2 class="grey lighten-2">Guilded Rose - Item Shop</h2>
+            </nav>
+        </div>
+    </header>
+    <main id="inventory-page-main">
+        <div id="content" ng-show="!model.loading">
+            <noscript><span>You must have JavaScript enabled to use Guilded Rose - Item Shop.</span></noscript>
+
+            <div id="full-inventory-list" >
+                <div class="row center-title guilded-rose-item-shop grey lighten-2">
+                    <div class="controls col s6">
+                        <div style="margin-top:10px;">
+                            <button class="btn btn-default blue-grey lighten-2" ng-click="incrementInventory()">Increment Inventory 1 Day</button>
+                            <button class="btn btn-default blue-grey lighten-2" ng-click="resetInventory()">Reset Inventory</button>
+                        </div>
+                        <div style="margin-top:10px;">
+                            <button class="btn btn-default blue-grey lighten-2" ng-click="getGossip()">Local Guilded Rose Gossip</button>
+                        </div>
+                    </div>
+                </div>
+                <div class="row center-title guilded-rose-gossip-item-shop grey lighten-2" ng-if="model.gossip">
+                    <h3 class="grey lighten-2">Local Guilded Rose Gossip</h3>
+                    <div class="controls col s6">
+                        <div style="margin-top:10px;">
+                            <h4 class="header"  style="margin-top:10px;">{{model.gossip}}</h5>
+                        </div>
+                    </div>
+                </div>
+                <div class="table" ng-if="model.inventoryData" style="margin-top:25px;">
+                    <table style="width:100%">
+                        <tr class="row" style="font-weight:bold">
+                            <td>Index</td>
+                            <td>Item Name</td>
+                            <td>Item Category</td> 
+                            <td>Sellin</td>
+                            <td>Quality</td>
+                            <td>Sell Item</td>
+                        </tr>
+                        <tr class="row">
+                            <td></td>
+                            <td><input type="text" name="input" ng-model="anItem.ItemName" required ng-trim="false"></td>
+                            <td><input type="text" name="input" ng-model="anItem.ItemCategory" required ng-trim="false"></td> 
+                            <td><input type="text" name="input" ng-model="anItem.Sellin" required ng-trim="false"></td>
+                            <td><input type="text" name="input" ng-model="anItem.Quality" required ng-trim="false"></td>
+                            <td><button class="btn btn-default blue-grey lighten-2" ng-click="purchaseItem(anItem)">Buy Item</button></td>
+                        </tr>
+                        <tr class="row" ng-if="model.inventoryData" ng-repeat="s in model.inventoryData">
+                            <td>{{$index}}</td>
+                            <td>{{s.ItemName}}</td>
+                            <td>{{s.ItemCategory}}</td>
+                            <td>{{s.Sellin}}</td>
+                            <td>{{s.Quality}}</td>
+                            <td><button class="btn btn-default blue-grey lighten-2" ng-click="sellItem($index)">Sell Item</button></td>
+                        </tr>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </main>
+</body>
+</html>

@@ -1,0 +1,20 @@
+Sword,Weapon,30,50
+Axe,Weapon,40,50
+Halberd,Weapon,60,40
+Aged Brie,Food,50,10
+Aged Milk,Food,20,20
+Mutton,Food,10,10
+Hand of Ragnaros,Sulfuras,80,80
+I am Murloc,Backstage Passes,20,10
+Raging Ogre,Backstage Pasess,10,10
+Giant Slayer,Conjured,15,50
+Storm Hammer,Conjured,20,50
+Belt of Giant Strength,Conjured,20,40
+Cheese,Food,5,5
+Potion of Healing,Potion,10,10
+Bag of Holding,Misc,10,50
+TAFKAL80ETC Concert,Backstage Passes,15,20
+Elixir of the Mongoose,Potion,5,7
++5 Dexterity Vest,Armor,10,20
+Full Plate Mail,Armor,50,50
+Wooden Shield,Armor,10,30
